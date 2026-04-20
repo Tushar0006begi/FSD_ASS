@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Weather Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <main class="page-shell">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Real-Life Application</p>
+        <h1>Smart Weather Analytics Dashboard</h1>
+        <p class="hero-text">
+          Monitor temperature, rainfall, humidity, and wind trends across cities with
+          interactive weather charts.
+        </p>
+        <div class="hero-meta">
+          <div class="hero-pill">
+            <span class="pill-label">Current City</span>
+            <strong id="heroCity">Mumbai</strong>
+          </div>
+          <div class="hero-pill">
+            <span class="pill-label">Season Insight</span>
+            <strong id="heroInsight">Humid coastal conditions</strong>
+          </div>
+          <div class="hero-pill">
+            <span class="pill-label">Updated</span>
+            <strong id="lastUpdated">--</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="control-panel">
+        <label for="citySelect">Select City</label>
+        <select id="citySelect">
+          <option value="mumbai">Mumbai</option>
+          <option value="delhi">Delhi</option>
+          <option value="bengaluru">Bengaluru</option>
+        </select>
+
+        <div class="toggle-group" aria-label="Time range selector">
+          <button class="range-btn active" data-range="weekly" type="button">Weekly</button>
+          <button class="range-btn" data-range="monthly" type="button">Monthly</button>
+        </div>
+
+        <div class="quick-facts">
+          <div>
+            <span>Feels Like</span>
+            <strong id="feelsLike">--</strong>
+          </div>
+          <div>
+            <span>Comfort Index</span>
+            <strong id="comfortIndex">--</strong>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="stats-grid">
+      <article class="stat-card accent-blue">
+        <span class="stat-label">Avg Temperature</span>
+        <strong id="avgTemp">--</strong>
+      </article>
+
+      <article class="stat-card accent-green">
+        <span class="stat-label">Avg Humidity</span>
+        <strong id="avgHumidity">--</strong>
+      </article>
+
+      <article class="stat-card accent-orange">
+        <span class="stat-label">Total Rainfall</span>
+        <strong id="totalRainfall">--</strong>
+      </article>
+
+      <article class="stat-card accent-red">
+        <span class="stat-label">Peak Wind Speed</span>
+        <strong id="peakWind">--</strong>
+      </article>
+    </section>
+
+    <section class="forecast-strip" aria-label="Forecast highlights">
+      <article class="forecast-card">
+        <span class="forecast-day" id="dayOneLabel">Today</span>
+        <strong id="dayOneTemp">--</strong>
+        <p id="dayOneText">--</p>
+      </article>
+      <article class="forecast-card">
+        <span class="forecast-day" id="dayTwoLabel">Tomorrow</span>
+        <strong id="dayTwoTemp">--</strong>
+        <p id="dayTwoText">--</p>
+      </article>
+      <article class="forecast-card">
+        <span class="forecast-day" id="dayThreeLabel">Next</span>
+        <strong id="dayThreeTemp">--</strong>
+        <p id="dayThreeText">--</p>
+      </article>
+    </section>
+
+    <section class="dashboard-grid">
+      <article class="chart-card wide-card">
+        <div class="card-heading">
+          <h2>Temperature Trend</h2>
+          <p>Daily or monthly average temperature pattern</p>
+        </div>
+        <canvas id="tempChart"></canvas>
+      </article>
+
+      <article class="chart-card">
+        <div class="card-heading">
+          <h2>Humidity Levels</h2>
+          <p>Moisture percentage over time</p>
+        </div>
+        <canvas id="humidityChart"></canvas>
+      </article>
+
+      <article class="chart-card">
+        <div class="card-heading">
+          <h2>Rainfall Distribution</h2>
+          <p>Relative rainfall contribution</p>
+        </div>
+        <canvas id="rainChart"></canvas>
+      </article>
+
+      <article class="chart-card wide-card">
+        <div class="card-heading">
+          <h2>Wind Speed Comparison</h2>
+          <p>Wind intensity during the selected period</p>
+        </div>
+        <canvas id="windChart"></canvas>
+      </article>
+    </section>
+
+    <section class="insight-panel">
+      <article class="insight-card">
+        <h2>Weather Summary</h2>
+        <p id="summaryText">
+          --
+        </p>
+      </article>
+      <article class="insight-card">
+        <h2>Travel Advice</h2>
+        <ul id="adviceList" class="advice-list"></ul>
+      </article>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
